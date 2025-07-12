@@ -105,7 +105,7 @@ def testimonials(request):
     return render(request, 'main/empty.html', context) 
 def portfolio(request):
     context['page_title'] = 'Portfolio - Rovid Smart Technology'
-    return render(request, 'main/empty.html', context) 
+    return render(request, 'main/portfolio.html', context) 
 def privacy_policy(request):
     context['page_title'] = 'Privacy Policy - Rovid Smart Technology'
     return render(request, 'main/empty.html', context) 
