@@ -122,8 +122,6 @@ class Testimony(models.Model):
 
     def __str__(self):
         return f"Testimony by {self.person_name} ({self.company_name})"
-
-
 # 5. Contact Us Submission Model
 class ContactMessage(models.Model):
     """
@@ -142,7 +140,6 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return f"Message from {self.name} - {self.subject}"
-
 
 # 6. Projects Model
 class Project(models.Model):
@@ -187,7 +184,7 @@ class Company(models.Model):
     tagline = models.CharField(max_length=255, blank=True, help_text="A short, catchy phrase about the company.")
     mission = models.TextField(blank=True, help_text="Company mission statement.")
     vision = models.TextField(blank=True, help_text="Company vision statement.")
-    values = models.TextField(blank=True, help_text="Core values of the company.")
+    values = models.JSONField(blank=True, help_text="Core values of the company.")
     about_us_text = models.TextField(blank=True, help_text="Longer 'About Us' section text.") # Renamed from 'about' to be more descriptive
     
     # Contact Information
@@ -217,10 +214,7 @@ class Company(models.Model):
 
     class Meta:
         verbose_name_plural = "Company (Global Settings)"
-        # Ensures there's only ever one company instance
-        # You'd create this in admin or a management command
-        # and then update it, not create multiple.
-        # This will raise a ValidationError if you try to save a second object.
+       
         constraints = [
             models.UniqueConstraint(fields=['id'], name='unique_company_settings')
         ]
