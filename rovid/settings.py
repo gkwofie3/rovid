@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-!i$p&ndx8m(ffmvnl4le&d&8inl&u1hvl)sf5sg@1_8=c6+5u-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['rovid.pythonanywhere.com']
 
 
 # Application definition
@@ -89,7 +89,7 @@ DATABASES = {
         'USER': 'rovid',
         'PASSWORD': 'padb.rOvO@2k20',
         'HOST': 'rovid.mysql.pythonanywhere-services.com',
-        'PORT': '3306', 
+        'PORT': '3306',
     }
 }
 
