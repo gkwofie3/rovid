@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-!i$p&ndx8m(ffmvnl4le&d&8inl&u1hvl)sf5sg@1_8=c6+5u-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['rovid.pythonanywhere.com','127.0.0.1']
+ALLOWED_HOSTS = ['rovid.pythonanywhere.com''rovid.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
@@ -76,22 +76,22 @@ WSGI_APPLICATION = 'rovid.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'rovid$rovid',
-#         'USER': 'rovid',
-#         'PASSWORD': 'padb.rOvO@2k20',
-#         'HOST': 'rovid.mysql.pythonanywhere-services.com',
-#         'PORT': '3306',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'rovid$rovid',
+        'USER': 'rovid',
+        'PASSWORD': 'padb.rOvO@2k20',
+        'HOST': 'rovid.mysql.pythonanywhere-services.com',
+        'PORT': '3306', 
+    }
+}
 
 
 # Password validation
