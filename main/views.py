@@ -25,6 +25,7 @@ from django.utils.timezone import now
 context={}
 def index(request): # Initialize context for each view
     context['page_title'] = 'Home - Rovid Smart Technology'
+    context['page_body'] = 'main/home.html'
     return render(request, 'main/index.html', context)
 
 def about(request):
