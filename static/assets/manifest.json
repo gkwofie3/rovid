@@ -1,0 +1,29 @@
+{
+  "name": "Rovid Smart Technology",
+  "short_name": "Rovid Smart Tech",
+  "description": "Rovid Smart Technology delivers intelligent building management systems, industrial automation, and custom software solutions. Empowering smart homes, industries, and enterprises.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a1930",
+  "theme_color": "#0a1930",
+  "icons": [
+    {
+      "src": "/static/assets/rovid/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/assets/rovid/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/assets/rovid/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

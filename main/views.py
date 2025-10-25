@@ -22,99 +22,151 @@ from django.db.models import Q
 
 from django.utils.timezone import now
 
-context={}
-def index(request): # Initialize context for each view
-    context['page_title'] = 'Home - Rovid Smart Technology'
-    context['page_body'] = 'main/home.html'
-    return render(request, 'main/index.html', context)
+from .models import Project, BlogPost, Service
+from .helpers import db # Assuming db() is defined in a helpers.py file
 
-def about(request):
-    context['page_title'] = 'About Us - Rovid Smart Technology'
-    return render(request, 'main/about.html', context) 
+# -----------------------------------------------------------
+# PRIMARY NAVIGATION VIEWS
+# -----------------------------------------------------------
 
-def blog(request):
-    context['page_title'] = 'Blog - Rovid Smart Technology'
-    return render(request, 'main/blog.html', context)
+def index(request):
+    """Renders the main homepage content within main.html."""
+    context = db(request)
+    context['page_title'] = 'Building Management & Automation Solutions'
+    context['html'] = 'index.html' 
+    return render(request, 'main.html', context)
 
-def services(request):
-    context['page_title'] = 'Our Services - Rovid Smart Technology'
-    return render(request, 'main/services.html', context) 
-
-def projects(request):
-    context['page_title'] = 'Projects - Rovid Smart Technology'
-    return render(request, 'main/projects.html', context) 
-
-def contact(request):
-    context['page_title'] = 'Contact Us - Rovid Smart Technology'
-    return render(request, 'main/contact.html', context)
-
-# --- Individual Service Views ---
-
-def bms_solutions(request):
-    context['page_title'] = 'BMS Solutions - Rovid Smart Technology'
-    return render(request, 'main/empty.html', context) 
-
-def cctv_installation(request):
-    context['page_title'] = 'CCTV Installation - Rovid Smart Technology'
-    return render(request, 'main/empty.html', context) 
-
-def solar_installations(request):
-    context['page_title'] = 'Solar Installations - Rovid Smart Technology'
-    return render(request, 'main/empty.html', context) 
-
-def automatic_gates(request):
-    context['page_title'] = 'Automatic Gates - Rovid Smart Technology'
-    return render(request, 'main/empty.html', context) 
-
-def web_app_development(request):
-    context['page_title'] = 'Web App Development - Rovid Smart Technology'
-    return render(request, 'main/empty.html', context)
-
-def mobile_desktop_app_development(request):
-    context['page_title'] = 'Mobile & Desktop App Development - Rovid Smart Technology'
-    return render(request, 'main/empty.html', context) 
-
-def industrial_automation(request):
-    context['page_title'] = 'Industrial Automation - Rovid Smart Technology'
-    return render(request, 'main/empty.html', context) 
-
-def electrical_installation(request):
-    context['page_title'] = 'Electrical Installation - Rovid Smart Technology'
-    return render(request, 'main/empty.html', context) 
-
-def smart_metering(request):
-    context['page_title'] = 'Smart Metering - Rovid Smart Technology'
-    return render(request, 'main/empty.html', context) 
-
-def graphic_design(request):
-    context['page_title'] = 'Graphic Design - Rovid Smart Technology'
-    return render(request, 'main/empty.html', context) 
-
-def video_production(request):
-    context['page_title'] = 'Video Production - Rovid Smart Technology'
-    return render(request, 'main/empty.html', context) 
-
-def three_d_modeling(request): 
-    context['page_title'] = '3D Modeling - Rovid Smart Technology'
-    return render(request, 'main/empty.html', context) 
-
-# --- Other Utility Views ---
-
-
-def testimonials(request):
-    context['page_title'] = 'Testimonials - Rovid Smart Technology'
-    return render(request, 'main/empty.html', context) 
-def portfolio(request):
-    context['page_title'] = 'Portfolio - Rovid Smart Technology'
-    return render(request, 'main/portfolio.html', context) 
-def privacy_policy(request):
-    context['page_title'] = 'Privacy Policy - Rovid Smart Technology'
-    return render(request, 'main/empty.html', context) 
-
-def terms_conditions(request):
-    context['page_title'] = 'Terms & Conditions - Rovid Smart Technology'
-    return render(request, 'main/empty.html', context)
-
+def about_view(request):
+    """Renders the About Us page content within main.html."""
+    context = db(request)
+    context['page_title'] = 'About Us'
+    # Fetch specific About Us data here (e.g., team members, history)
+    context['html'] = 'rovid/about.html'
+    return render(request, 'main.html', context)
 def faq(request):
-    context['page_title'] = 'FAQ - Rovid Smart Technology'
-    return render(request, 'main/empty.html', context) 
+    """Renders the fa q Us page content within main.html."""
+    context = db(request)
+    context['page_title'] = 'Frequently Asked Questions'
+    # Fetch specific fq Us data here (e.g., team members, history)
+    context['html'] = 'rovid/faq.html'
+    return render(request, 'main.html', context)
+
+def contact_view(request):
+    """Renders the Contact Us page content within main.html."""
+    context = db(request)
+    context['page_title'] = 'Contact Us'
+    # Placeholder for form logic
+    context['success'] = request.method == 'POST' # Simple success flag
+    context['html'] = 'rovid/contact.html'
+    return render(request, 'main.html', context)
+
+
+def careers_view(request):
+    """Renders the Careers page content within main.html."""
+    context = db(request)
+    context['page_title'] = 'Careers & Opportunities'
+    # context['jobs'] = JobPosting.objects.filter(is_active=True)
+    context['html'] = 'rovid/careers.html'
+    return render(request, 'main.html', context)
+def testimonials(request):
+    context = db(request)
+    context['page_title'] = 'Testimonials'
+    # context['jobs'] = JobPosting.objects.filter(is_active=True)
+    context['html'] = 'rovid/testimonials.html'
+    return render(request, 'main.html', context)
+
+# -----------------------------------------------------------
+# PORTFOLIO / PROJECTS VIEWS
+# -----------------------------------------------------------
+
+def portfolio_view(request):
+    """Renders the main Portfolio landing page content within main.html."""
+    context = db(request)
+    context['page_title'] = 'Our Portfolio'
+    context['html'] = 'rovid/portfolio.html'
+    return render(request, 'main.html', context)
+
+def project_listing_view(request):
+    """Renders the page that lists all available projects within main.html."""
+    context = db(request)
+    context['page_title'] = 'All Projects'
+    # context['projects'] = Project.objects.all().order_by('-date')
+    context['html'] = 'rovid/project.html'
+    return render(request, 'main.html', context)
+
+def project_detail_view(request, project_slug):
+    """Renders a specific project case study within main.html."""
+    # Assuming the project title comes from the slug
+    dynamic_title = project_slug.replace('-', ' ').title()
+    
+    context = db(request)
+    # project = get_object_or_404(Project, slug=project_slug)
+    context['slug'] = project_slug
+    context['title'] = dynamic_title # Used for the main heading on the page
+    context['page_title'] = f'Project: {dynamic_title}' # Used for the HTML <title>
+    context['html'] = 'rovid/project_detail.html'
+    return render(request, 'main.html', context)
+
+
+# -----------------------------------------------------------
+# BLOG / INSIGHTS VIEWS
+# -----------------------------------------------------------
+
+def blog_listing_view(request):
+    """Renders the page that lists all blog posts within main.html."""
+    context = db(request)
+    context['page_title'] = 'Insights & Blog'
+    # context['posts'] = BlogPost.objects.filter(published=True).order_by('-date')
+    context['html'] = 'rovid/blog.html'
+    return render(request, 'main.html', context)
+
+
+def blog_post_view(request, post_slug):
+    """Renders a single, detailed blog post within main.html."""
+    # Assuming the post title comes from the slug
+    dynamic_title = post_slug.replace('-', ' ').title()
+
+    context = db(request)
+    # post = get_object_or_404(BlogPost, slug=post_slug)
+    context['slug'] = post_slug
+    context['title'] = dynamic_title # Used for the main heading on the page
+    context['page_title'] = f'Insight: {dynamic_title}' # Used for the HTML <title>
+    context['html'] = 'rovid/blog_post.html'
+    return render(request, 'main.html', context)
+
+
+# -----------------------------------------------------------
+# SERVICE DETAIL VIEW
+# -----------------------------------------------------------
+
+def service_detail_view(request, service_slug):
+    """Renders a specific service detail page within main.html."""
+    # Assuming the service title comes from the slug
+    dynamic_title = service_slug.replace('-', ' ').title()
+    
+    context = db(request)
+    # service = get_object_or_404(Service, slug=service_slug)
+    context['slug'] = service_slug
+    context['title'] = dynamic_title # Used for the main heading on the page
+    context['page_title'] = f'Service: {dynamic_title}' # Used for the HTML <title>
+    context['html'] = 'rovid/service_detail.html'
+    return render(request, 'main.html', context)
+
+
+# -----------------------------------------------------------
+# FOOTER LEGAL VIEWS (Static Content)
+# -----------------------------------------------------------
+
+def privacy_policy_view(request):
+    """Renders the Privacy Policy page content within main.html."""
+    context = db(request)
+    context['page_title'] = 'Privacy Policy'
+    context['html'] = 'rovid/privacy_policy.html'
+    return render(request, 'main.html', context)
+
+def terms_of_service_view(request):
+    """Renders the Terms of Service page content within main.html."""
+    context = db(request)
+    context['page_title'] = 'Terms of Service'
+    context['html'] = 'rovid/terms_of_service.html'
+    return render(request, 'main.html', context)
