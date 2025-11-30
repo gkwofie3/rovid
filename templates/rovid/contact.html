@@ -1,5 +1,5 @@
 <main>
-    <section class="pt-15 pb-9 pt-lg-18 pb-lg-11 bg-light">
+    <section class="pt-15 pb-9 pt-lg-18 pb-lg-11">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 mx-auto text-center">
@@ -10,7 +10,7 @@
         </div>
     </section>
 
-    <section class="py-9 py-lg-12">
+    <section class="py-1 py-lg-4">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mb-5 mb-lg-0">
@@ -43,19 +43,29 @@
 
                 <div class="col-lg-6">
                     <div class="card shadow-lg border-0 p-4 p-lg-5 rounded-4">
+                        {%if messages%}
+                        {% for message in messages %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
                         <h4 class="fw-bold mb-4">Send Us a Message</h4>
-                        <form>
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="task" value="contact_us" id="">
                             <div class="mb-3">
                                 <label for="formName" class="form-label">Full Name</label>
-                                <input type="text" class="form-control" id="formName" required>
+                                <input type="text" class="form-control" name="formName" id="formName" required>
                             </div>
                             <div class="mb-3">
                                 <label for="formEmail" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="formEmail" required>
+                                <input type="email" class="form-control" name="formEmail" id="formEmail" required>
                             </div>
                             <div class="mb-3">
                                 <label for="formService" class="form-label">Service of Interest</label>
-                                <select class="form-select" id="formService">
+                                <select class="form-select bg-dark" name="formService" id="formService">
                                     <option selected>Choose a service...</option>
                                     <option value="bms">Building Management Systems (BMS)</option>
                                     <option value="industrial">Industrial Automation</option>
@@ -65,7 +75,7 @@
                             </div>
                             <div class="mb-4">
                                 <label for="formMessage" class="form-label">Your Message / Project Details</label>
-                                <textarea class="form-control" id="formMessage" rows="4" required></textarea>
+                                <textarea class="form-control" name="formMessage" id="formMessage" rows="4" required></textarea>
                             </div>
                             <button type="submit" class="btn btn-success btn-lg w-100 hover-lift">Send Message</button>
                             <p class="small text-muted mt-2 text-center">We respect your privacy. No spam guaranteed.</p>
