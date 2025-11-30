@@ -2,15 +2,6 @@
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-/**
- * SVGInject - Version 1.2.3
- * A tiny, intuitive, robust, caching solution for injecting SVG files inline into the DOM.
- *
- * https://github.com/iconfu/svg-inject
- *
- * Copyright (c) 2018 INCORS, the creators of iconfu.com
- * @license MIT License - https://github.com/iconfu/svg-inject/blob/master/LICENSE
- */
 
 (function (window, document) {
   // constants for better minification
@@ -5211,12 +5202,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
 
   defineJQueryPlugin(Dropdown);
 
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap util/backdrop.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */
+  
 
   /**
    * Constants
@@ -8729,7 +8715,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
   function getStyle(elem) {
     var style = getComputedStyle(elem);
     if (!style) {
-      logError('Style returned ' + style + '. Are you running this code in a hidden iframe on Firefox? ' + 'See https://bit.ly/getsizebug1');
+      logError('Style returned ' + style + '. Are you running this code in a hidden iframe on Firefox? ' + '');
     }
     return style;
   }
@@ -11698,11 +11684,6 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-/*!
- * Masonry layout mode
- * sub-classes Masonry
- * https://masonry.desandro.com
- */
 
 (function (window, factory) {
   // universal module definition
@@ -11807,11 +11788,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
 
 },{"../layout-mode":13}],17:[function(require,module,exports){
 (function (global){(function (){
-/*!
- * Jarallax v2.2.1 (https://github.com/nk-o/jarallax)
- * Copyright 2024 nK <https://nkdev.info>
- * Licensed under MIT (https://github.com/nk-o/jarallax/blob/master/LICENSE)
- */
+
 'use strict';
 
 function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
@@ -12161,9 +12138,7 @@ var Jarallax = /*#__PURE__*/function () {
       src: self.options.imgSrc || null,
       $container: null,
       useImgTag: false,
-      // 1. Position fixed is needed for the most of browsers because absolute position have glitches
-      // 2. On MacOS with smooth scroll there is a huge lags with absolute position - https://github.com/nk-o/jarallax/issues/75
-      // 3. Previously used 'absolute' for mobile devices. But we re-tested on iPhone 12 and 'fixed' position is working better, then 'absolute', so for now position is always 'fixed'
+
       position: 'fixed'
     };
     if (self.initImg() && self.canInitParallax()) {
@@ -12339,9 +12314,6 @@ var Jarallax = /*#__PURE__*/function () {
         self.image.position = 'absolute';
       }
 
-      // 1. Check if one of parents have transform style (without this check, scroll transform will be inverted if used parallax with position fixed)
-      //    discussion - https://github.com/nk-o/jarallax/issues/9
-      // 2. Check if parents have overflow scroll
       if (self.image.position === 'fixed') {
         var $parents = getParents(self.$item).filter(function (el) {
           var styles = global$2.getComputedStyle(el);
@@ -12582,8 +12554,7 @@ var Jarallax = /*#__PURE__*/function () {
   }]);
 }(); // global definition
 var jarallax$1 = function jarallax$1(items, options) {
-  // check for dom element
-  // thanks: http://stackoverflow.com/questions/384286/javascript-isdom-how-do-you-check-if-a-javascript-object-is-a-dom-object
+
   if ((typeof HTMLElement === "undefined" ? "undefined" : _typeof(HTMLElement)) === 'object' ? items instanceof HTMLElement : items && _typeof(items) === 'object' && items !== null && items.nodeType === 1 && typeof items.nodeName === 'string') {
     items = [items];
   }
@@ -12610,11 +12581,7 @@ var jarallax$1 = function jarallax$1(items, options) {
 };
 jarallax$1.constructor = Jarallax;
 
-/*!
- * Video Worker v2.2.0 (https://github.com/nk-o/video-worker)
- * Copyright 2024 nK <https://nkdev.info>
- * Licensed under MIT (https://github.com/nk-o/video-worker/blob/master/LICENSE)
- */
+
 
 var defaults = {
   autoplay: false,
@@ -16839,7 +16806,7 @@ document.querySelectorAll(".collapse-group .collapse").forEach(function (e) {
     if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       document.documentElement.setAttribute('data-bs-theme', 'dark');
     } else {
-      document.documentElement.setAttribute('data-bs-theme', theme);
+      document.documentElement.setAttribute('data-bs-theme', 'dark');
     }
   };
   setTheme(getPreferredTheme());
@@ -16865,8 +16832,8 @@ document.querySelectorAll(".collapse-group .collapse").forEach(function (e) {
       toggle.addEventListener('click', function () {
         var theme = toggle.getAttribute('data-bs-theme-value');
         localStorage.setItem('theme', theme);
-        setTheme(theme);
-        showActiveTheme(theme);
+        setTheme('dark');
+        showActiveTheme('dark');
       });
     });
   });
