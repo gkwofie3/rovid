@@ -15,11 +15,6 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-!i$p&ndx8m(ffmvnl4le&d&8inl&u1hvl)sf5sg@1_8=c6+5u-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -78,17 +73,8 @@ WSGI_APPLICATION = 'rovid.wsgi.application'
 
 DATABASES = {
     'default': {
-<<<<<<< HEAD
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'rovid$rovid',
-        'USER': 'rovid',
-        'PASSWORD': 'padb.rOvO@2k20',
-        'HOST': 'rovid.mysql.pythonanywhere-services.com',
-        'PORT': '3306',
-=======
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
->>>>>>> d2c829d976df598f912275846d60ecee57b26df8
     }
 }
 # DATABASES = {
