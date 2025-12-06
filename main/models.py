@@ -179,7 +179,7 @@ class Project(models.Model):
     completion_date = models.DateField(help_text="Date the project was completed.")
     image1 = models.ImageField(upload_to=get_image_upload_path, blank=True, null=True, help_text="Main image for the project.")
     image2 = models.ImageField(upload_to=get_image_upload_path, blank=True, null=True, help_text="Second image for the project.")
-
+    visible = models.BooleanField(default=False, help_text="Whether this project is visible on the portfolio page.")
     class Meta:
         verbose_name_plural = "Projects"
         ordering = ['-completion_date', 'title']

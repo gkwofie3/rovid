@@ -13,24 +13,28 @@
     <section class="py-9 py-lg-12">
         <div class="container">
             <div class="row g-4">
+                {% for project in projects %}
+                {% if project.visible %}
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card card-body shadow-sm border-0 p-0 overflow-hidden rounded-4">
+                        <img src="{{ project.image1.url }}" alt="Industrial Control Panel" class="img-fluid card-img-top">
+                        <div class="p-4">
+                            <h5 class="fw-bold mb-1">{{project.client_name}}</h5>
+                            <p class="small text-primary mb-2">{{project.title}}</p>
+                            <p class="card-text small text-muted">{{project.description}}</p>
+                            <a href="{{project.slug}}" class="text-link small">View Case Study<i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
                 <div class="col-md-6 col-lg-4" data-aos="fade-up">
                     <div class="card card-body shadow-sm border-0 p-0 overflow-hidden rounded-4">
-                        <img src="/static/assets/img/project-placeholder-1.jpg" alt="Smart Office Building" class="img-fluid card-img-top">
+                        <img src="/static/assets/img/team/p2.jpg" alt="Smart Office Building" class="img-fluid card-img-top">
                         <div class="p-4">
                             <h5 class="fw-bold mb-1">Commercial Smart Office</h5>
                             <p class="small text-primary mb-2">Building Management System (BMS)</p>
                             <p class="card-text small text-muted">A comprehensive centralized control system for HVAC, lighting, and security, leading to 30% energy savings.</p>
-                            <a href="#!" class="text-link small">View Case Study <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card card-body shadow-sm border-0 p-0 overflow-hidden rounded-4">
-                        <img src="/static/assets/img/project-placeholder-2.jpg" alt="Industrial Control Panel" class="img-fluid card-img-top">
-                        <div class="p-4">
-                            <h5 class="fw-bold mb-1">Factory Process Automation</h5>
-                            <p class="small text-primary mb-2">Industrial PLC & SCADA Integration</p>
-                            <p class="card-text small text-muted">Implemented PLC controls and a SCADA interface to automate the entire production line, reducing errors by 45%.</p>
                             <a href="#!" class="text-link small">View Case Study <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
